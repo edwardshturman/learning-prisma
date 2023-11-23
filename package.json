@@ -1,12 +1,13 @@
 {
   "name": "learning-prisma",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Learning the Prisma ORM off of docs and YT tutorials",
+  "type": "module",
+  "main": "./dist/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Edward Shturman",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.9.4",
