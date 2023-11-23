@@ -12,13 +12,19 @@ datasource db {
 }
 
 model User {
-  id          String   @id @default(uuid())
-  email       String   @unique
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  isAdmin     Boolean  @default(false)
-  preferences Json
+  id          String              @id @default(uuid())
+  email       String              @unique
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  isAdmin     Boolean             @default(false)
+  preferences UserPreferencesSet?
   posts       Post[]
+}
+
+model UserPreferencesSet {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+  theme  String @default("dark")
 }
 
 model Post {
