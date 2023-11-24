@@ -4,7 +4,9 @@ const UserSchema = z.object({
   username: z.string()
 })
 
-const user = {
+type User = z.infer<typeof UserSchema>
+
+const user: User = {
   username: 'edwardshturman'
 }
 
