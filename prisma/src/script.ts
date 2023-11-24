@@ -4,7 +4,15 @@ const prisma = new PrismaClient()
 async function createUser (email: string) {
   const user = await prisma.user.create({
     data: {
-      email
+      email,
+      preferences: {
+        create: {
+          theme: 'DARK'
+        }
+      }
+    },
+    include: {
+      preferences: true
     }
   })
 
