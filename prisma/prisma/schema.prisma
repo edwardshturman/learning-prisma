@@ -24,7 +24,12 @@ model User {
 model UserPreferencesSet {
   user   User   @relation(fields: [userId], references: [id])
   userId String @unique
-  theme  String @default("dark")
+  theme  Theme  @default(DARK)
+}
+
+enum Theme {
+  DARK
+  LIGHT
 }
 
 model Post {
