@@ -1,4 +1,4 @@
-import { PrismaClient, User } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function createUser (email: string) {
@@ -11,5 +11,13 @@ async function createUser (email: string) {
   return user
 }
 
+async function deleteUsers () {
+  const users = await prisma.user.deleteMany()
+  return users
+}
+
 const edward = await createUser('emshturman@dons.usfca.edu')
 console.log(edward)
+
+const deletedUsers = await deleteUsers()
+console.log(deletedUsers)
