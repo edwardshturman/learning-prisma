@@ -52,7 +52,7 @@ class LinkedList:
 
     def search(self, query):
         """
-        Searches for the first node containing matching `data`.
+        Searches for the first `Node` containing matching `data` in O(n).
         Returns a `Node` object on match, otherwise `None`.
         """
         current = self.head
@@ -92,3 +92,19 @@ class LinkedList:
             new.next = current.next
         # Point previous Node to new
         current.next = new
+
+    def remove(self, query):
+        """
+        Removes the `Node` from the list whose `data` matches the `query` in O(n).
+        """
+        previous = self.head
+        current = self.head
+        while current != None:
+            if current.data == query:
+                if current == self.head:
+                    self.head = current.next
+                previous.next = current.next
+                return "Removed %s" % current
+            previous = current
+            current = current.next
+        return "No Node with data %s" % query
