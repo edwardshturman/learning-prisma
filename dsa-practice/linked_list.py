@@ -70,3 +70,25 @@ class LinkedList:
         new = Node(data)
         new.next = self.head
         self.head = new
+
+    def insert(self, data, index):
+        """
+        Takes `data`, instantiates it as a new `Node`, and adds it at the `index` position in the list in O(n).
+        """
+        new = Node(data)
+        if index == 0:
+            return self.prepend(data)
+
+        current = self.head
+        count = 0
+        while index - 1 > count:
+            if current.next == None:
+                return "Index out of bounds"
+            current = current.next
+            count += 1
+
+        # Point new Node to next if any
+        if current.next:
+            new.next = current.next
+        # Point previous Node to new
+        current.next = new
